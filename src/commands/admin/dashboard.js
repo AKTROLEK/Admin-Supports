@@ -6,9 +6,7 @@ import { t } from '../../locales/index.js';
 export default {
     data: new SlashCommandBuilder()
         .setName('dashboard')
-        .setNameLocalizations({ 'ar': 'لوحة-التحكم' })
-        .setDescription('View admin dashboard')
-        .setDescriptionLocalizations({ 'ar': 'عرض لوحة التحكم الإدارية' }),
+        .setDescription('View admin dashboard'),
     
     execute: async (interaction) => {
         await interaction.deferReply();
