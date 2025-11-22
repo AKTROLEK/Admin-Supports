@@ -1,0 +1,26 @@
+{
+  "name": "fivem-admin-statistics-bot",
+  "version": "1.0.0",
+  "description": "Comprehensive Discord bot for FiveM server admin statistics and management",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "fivem",
+    "admin",
+    "statistics",
+    "management"
+  ],
+  "author": "AKTROLEK",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "better-sqlite3": "^9.2.2",
+    "dotenv": "^16.3.1"
+  }
+}
