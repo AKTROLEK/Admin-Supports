@@ -137,3 +137,13 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Bot specific files
+data/database.db
+data/database.db-shm
+data/database.db-wal
+data/backups/*.db
+data/exports/*.json
+!data/.gitkeep
+!data/backups/.gitkeep
+!data/exports/.gitkeep
