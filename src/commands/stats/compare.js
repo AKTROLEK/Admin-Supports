@@ -64,9 +64,11 @@ export default {
         // Determine winner
         let winner = '';
         if (user1Score > user2Score) {
-            winner = `🏆 ${user1.username} متفوق بـ ${((user1Score - user2Score) / user2Score * 100).toFixed(1)}%`;
+            const diff = user2Score > 0 ? ((user1Score - user2Score) / user2Score * 100).toFixed(1) : 'N/A';
+            winner = `🏆 ${user1.username} متفوق بـ ${diff}${diff !== 'N/A' ? '%' : ''}`;
         } else if (user2Score > user1Score) {
-            winner = `🏆 ${user2.username} متفوق بـ ${((user2Score - user1Score) / user1Score * 100).toFixed(1)}%`;
+            const diff = user1Score > 0 ? ((user2Score - user1Score) / user1Score * 100).toFixed(1) : 'N/A';
+            winner = `🏆 ${user2.username} متفوق بـ ${diff}${diff !== 'N/A' ? '%' : ''}`;
         } else {
             winner = '🤝 أداء متساوٍ';
         }
@@ -113,33 +115,45 @@ function getDetailedComparison(user1, user2, voice1, voice2, int1, int2, msg1, m
     
     // Voice comparison
     if (voice1.total_duration > voice2.total_duration) {
-        const diff = ((voice1.total_duration - voice2.total_duration) / voice2.total_duration * 100).toFixed(1);
-        comparison += `🎤 ${user1.username} لديه وقت صوت أكثر بـ ${diff}%\n`;
+        const diff = voice2.total_duration > 0 
+            ? ((voice1.total_duration - voice2.total_duration) / voice2.total_duration * 100).toFixed(1) 
+            : 'N/A';
+        comparison += `🎤 ${user1.username} لديه وقت صوت أكثر بـ ${diff}${diff !== 'N/A' ? '%' : ''}\n`;
     } else if (voice2.total_duration > voice1.total_duration) {
-        const diff = ((voice2.total_duration - voice1.total_duration) / voice1.total_duration * 100).toFixed(1);
-        comparison += `🎤 ${user2.username} لديه وقت صوت أكثر بـ ${diff}%\n`;
+        const diff = voice1.total_duration > 0 
+            ? ((voice2.total_duration - voice1.total_duration) / voice1.total_duration * 100).toFixed(1) 
+            : 'N/A';
+        comparison += `🎤 ${user2.username} لديه وقت صوت أكثر بـ ${diff}${diff !== 'N/A' ? '%' : ''}\n`;
     } else {
         comparison += `🎤 وقت الصوت متساوٍ\n`;
     }
     
     // Interactions comparison
     if (int1.count > int2.count) {
-        const diff = ((int1.count - int2.count) / int2.count * 100).toFixed(1);
-        comparison += `👥 ${user1.username} لديه تفاعلات أكثر بـ ${diff}%\n`;
+        const diff = int2.count > 0 
+            ? ((int1.count - int2.count) / int2.count * 100).toFixed(1) 
+            : 'N/A';
+        comparison += `👥 ${user1.username} لديه تفاعلات أكثر بـ ${diff}${diff !== 'N/A' ? '%' : ''}\n`;
     } else if (int2.count > int1.count) {
-        const diff = ((int2.count - int1.count) / int1.count * 100).toFixed(1);
-        comparison += `👥 ${user2.username} لديه تفاعلات أكثر بـ ${diff}%\n`;
+        const diff = int1.count > 0 
+            ? ((int2.count - int1.count) / int1.count * 100).toFixed(1) 
+            : 'N/A';
+        comparison += `👥 ${user2.username} لديه تفاعلات أكثر بـ ${diff}${diff !== 'N/A' ? '%' : ''}\n`;
     } else {
         comparison += `👥 التفاعلات متساوية\n`;
     }
     
     // Messages comparison
     if (msg1.total_messages > msg2.total_messages) {
-        const diff = ((msg1.total_messages - msg2.total_messages) / msg2.total_messages * 100).toFixed(1);
-        comparison += `💬 ${user1.username} لديه رسائل أكثر بـ ${diff}%`;
+        const diff = msg2.total_messages > 0 
+            ? ((msg1.total_messages - msg2.total_messages) / msg2.total_messages * 100).toFixed(1) 
+            : 'N/A';
+        comparison += `💬 ${user1.username} لديه رسائل أكثر بـ ${diff}${diff !== 'N/A' ? '%' : ''}`;
     } else if (msg2.total_messages > msg1.total_messages) {
-        const diff = ((msg2.total_messages - msg1.total_messages) / msg1.total_messages * 100).toFixed(1);
-        comparison += `💬 ${user2.username} لديه رسائل أكثر بـ ${diff}%`;
+        const diff = msg1.total_messages > 0 
+            ? ((msg2.total_messages - msg1.total_messages) / msg1.total_messages * 100).toFixed(1) 
+            : 'N/A';
+        comparison += `💬 ${user2.username} لديه رسائل أكثر بـ ${diff}${diff !== 'N/A' ? '%' : ''}`;
     } else {
         comparison += `💬 الرسائل متساوية`;
     }

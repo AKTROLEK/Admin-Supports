@@ -10,6 +10,9 @@ import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// Data directory path - can be overridden via environment variable
+const DATA_DIR = process.env.DATA_DIR || join(__dirname, '../../../data');
+
 export default {
     data: new SlashCommandBuilder()
         .setName('export')
@@ -70,8 +73,8 @@ export default {
                 admin_notes: db.prepare(`SELECT * FROM admin_notes`).all()
             };
             
-            // Write to exports directory in project
-            const exportsDir = join(__dirname, '../../../data/exports');
+            // Write to exports directory in data folder
+            const exportsDir = join(DATA_DIR, 'exports');
             if (!existsSync(exportsDir)) {
                 mkdirSync(exportsDir, { recursive: true });
             }

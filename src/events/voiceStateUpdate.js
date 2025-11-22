@@ -5,7 +5,10 @@ export default {
     name: 'voiceStateUpdate',
     execute: async (oldState, newState) => {
         const userId = newState.id;
-        const username = newState.member.user.username;
+        const username = newState.member?.user?.username || 'Unknown User';
+        
+        // Skip if member data is not available
+        if (!newState.member) return;
         
         // User joined a voice channel
         if (!oldState.channelId && newState.channelId) {

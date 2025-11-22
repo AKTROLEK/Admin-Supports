@@ -24,7 +24,8 @@ export function formatDateTime(timestamp) {
 }
 
 export function formatDuration(milliseconds) {
-    if (!milliseconds || milliseconds < 0) return '0 دقيقة';
+    if (milliseconds === null || milliseconds === undefined || milliseconds < 0) return '0 دقيقة';
+    if (milliseconds === 0) return '0 دقيقة';
     
     const seconds = Math.floor(milliseconds / 1000);
     const minutes = Math.floor(seconds / 60);
@@ -157,7 +158,10 @@ export function restoreBackup(filename) {
 
 // Statistics helpers
 export function calculatePercentageChange(current, previous) {
-    if (previous === 0) return current > 0 ? 100 : 0;
+    if (previous === 0) {
+        if (current === 0) return '0';
+        return 'N/A'; // Infinite increase
+    }
     return ((current - previous) / previous * 100).toFixed(1);
 }
 
