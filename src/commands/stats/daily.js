@@ -6,15 +6,11 @@ import { t } from '../../locales/index.js';
 export default {
     data: new SlashCommandBuilder()
         .setName('stats-daily')
-        .setNameLocalizations({ 'ar': 'احصائيات-يومية' })
         .setDescription('View daily statistics')
-        .setDescriptionLocalizations({ 'ar': 'عرض الإحصائيات اليومية' })
         .addUserOption(option =>
             option
                 .setName('user')
-                .setNameLocalizations({ 'ar': 'مستخدم' })
                 .setDescription('User to view statistics for')
-                .setDescriptionLocalizations({ 'ar': 'المستخدم لعرض إحصائياته' })
                 .setRequired(false)
         ),
     

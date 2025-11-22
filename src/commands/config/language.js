@@ -5,18 +5,14 @@ import { EmbedColors } from '../../utils/helpers.js';
 export default {
     data: new SlashCommandBuilder()
         .setName('language')
-        // Arabic ('ar') locale is officially supported by Discord API
-        // even though it's not yet in discord-api-types Locale enum
-        .setNameLocalizations({ 'ar': 'اللغة' })
+        // Note: Arabic localizations removed as 'ar' locale is not yet supported by Discord API
+        // The bot still supports Arabic through its internal localization system
         .setDescription('Change bot language')
-        .setDescriptionLocalizations({ 'ar': 'تغيير لغة البوت' })
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
         .addStringOption(option =>
             option
                 .setName('lang')
-                .setNameLocalizations({ 'ar': 'اللغة' })
                 .setDescription('Language to set')
-                .setDescriptionLocalizations({ 'ar': 'اللغة المراد تعيينها' })
                 .addChoices(
                     { name: 'العربية', value: 'ar' },
                     { name: 'English', value: 'en' }

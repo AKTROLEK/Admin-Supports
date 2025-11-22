@@ -6,15 +6,11 @@ import { t } from '../../locales/index.js';
 export default {
     data: new SlashCommandBuilder()
         .setName('stats-monthly')
-        .setNameLocalizations({ 'ar': 'احصائيات-شهرية' })
         .setDescription('View monthly statistics')
-        .setDescriptionLocalizations({ 'ar': 'عرض الإحصائيات الشهرية' })
         .addUserOption(option =>
             option
                 .setName('user')
-                .setNameLocalizations({ 'ar': 'مستخدم' })
                 .setDescription('User to view statistics for')
-                .setDescriptionLocalizations({ 'ar': 'المستخدم لعرض إحصائياته' })
                 .setRequired(false)
         ),
     
