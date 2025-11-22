@@ -6,31 +6,23 @@ import { t } from '../../locales/index.js';
 export default {
     data: new SlashCommandBuilder()
         .setName('compare')
-        .setNameLocalizations({ 'ar': 'مقارنة' })
         .setDescription('Compare statistics between two admins')
-        .setDescriptionLocalizations({ 'ar': 'مقارنة الإحصائيات بين إداريين' })
         .addUserOption(option =>
             option
                 .setName('user1')
-                .setNameLocalizations({ 'ar': 'مستخدم1' })
                 .setDescription('First user')
-                .setDescriptionLocalizations({ 'ar': 'المستخدم الأول' })
                 .setRequired(true)
         )
         .addUserOption(option =>
             option
                 .setName('user2')
-                .setNameLocalizations({ 'ar': 'مستخدم2' })
                 .setDescription('Second user')
-                .setDescriptionLocalizations({ 'ar': 'المستخدم الثاني' })
                 .setRequired(true)
         )
         .addStringOption(option =>
             option
                 .setName('period')
-                .setNameLocalizations({ 'ar': 'الفترة' })
                 .setDescription('Time period')
-                .setDescriptionLocalizations({ 'ar': 'الفترة الزمنية' })
                 .addChoices(
                     { name: 'Daily / يومي', value: 'daily' },
                     { name: 'Weekly / أسبوعي', value: 'weekly' },

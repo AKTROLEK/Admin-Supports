@@ -16,16 +16,12 @@ const DATA_DIR = process.env.DATA_DIR || join(__dirname, '../../../data');
 export default {
     data: new SlashCommandBuilder()
         .setName('export')
-        .setNameLocalizations({ 'ar': 'تصدير' })
         .setDescription('Export statistics to JSON')
-        .setDescriptionLocalizations({ 'ar': 'تصدير الإحصائيات بصيغة JSON' })
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
         .addStringOption(option =>
             option
                 .setName('period')
-                .setNameLocalizations({ 'ar': 'الفترة' })
                 .setDescription('Time period')
-                .setDescriptionLocalizations({ 'ar': 'الفترة الزمنية' })
                 .addChoices(
                     { name: 'Daily / يومي', value: 'daily' },
                     { name: 'Weekly / أسبوعي', value: 'weekly' },

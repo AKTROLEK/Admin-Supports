@@ -5,36 +5,26 @@ import { t } from '../../locales/index.js';
 export default {
     data: new SlashCommandBuilder()
         .setName('backup')
-        .setNameLocalizations({ 'ar': 'نسخ-احتياطي' })
         .setDescription('Manage database backups')
-        .setDescriptionLocalizations({ 'ar': 'إدارة النسخ الاحتياطية' })
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
         .addSubcommand(subcommand =>
             subcommand
                 .setName('create')
-                .setNameLocalizations({ 'ar': 'انشاء' })
                 .setDescription('Create a new backup')
-                .setDescriptionLocalizations({ 'ar': 'إنشاء نسخة احتياطية جديدة' })
         )
         .addSubcommand(subcommand =>
             subcommand
                 .setName('list')
-                .setNameLocalizations({ 'ar': 'قائمة' })
                 .setDescription('List all backups')
-                .setDescriptionLocalizations({ 'ar': 'عرض جميع النسخ الاحتياطية' })
         )
         .addSubcommand(subcommand =>
             subcommand
                 .setName('restore')
-                .setNameLocalizations({ 'ar': 'استرجاع' })
                 .setDescription('Restore from a backup')
-                .setDescriptionLocalizations({ 'ar': 'استرجاع من نسخة احتياطية' })
                 .addStringOption(option =>
                     option
                         .setName('filename')
-                        .setNameLocalizations({ 'ar': 'اسم-الملف' })
                         .setDescription('Backup filename')
-                        .setDescriptionLocalizations({ 'ar': 'اسم ملف النسخة الاحتياطية' })
                         .setRequired(true)
                 )
         ),

@@ -6,38 +6,28 @@ import { t } from '../../locales/index.js';
 export default {
     data: new SlashCommandBuilder()
         .setName('note')
-        .setNameLocalizations({ 'ar': 'ملاحظة' })
         .setDescription('Manage admin notes')
-        .setDescriptionLocalizations({ 'ar': 'إدارة ملاحظات الإداريين' })
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
         .addSubcommand(subcommand =>
             subcommand
                 .setName('add')
-                .setNameLocalizations({ 'ar': 'اضافة' })
                 .setDescription('Add a note to an admin')
-                .setDescriptionLocalizations({ 'ar': 'إضافة ملاحظة لإداري' })
                 .addUserOption(option =>
                     option
                         .setName('admin')
-                        .setNameLocalizations({ 'ar': 'اداري' })
                         .setDescription('The admin to add note for')
-                        .setDescriptionLocalizations({ 'ar': 'الإداري المراد إضافة ملاحظة له' })
                         .setRequired(true)
                 )
                 .addStringOption(option =>
                     option
                         .setName('note')
-                        .setNameLocalizations({ 'ar': 'النص' })
                         .setDescription('The note content')
-                        .setDescriptionLocalizations({ 'ar': 'محتوى الملاحظة' })
                         .setRequired(true)
                 )
                 .addIntegerOption(option =>
                     option
                         .setName('rating')
-                        .setNameLocalizations({ 'ar': 'التقييم' })
                         .setDescription('Rating (1-5)')
-                        .setDescriptionLocalizations({ 'ar': 'التقييم (1-5)' })
                         .setMinValue(1)
                         .setMaxValue(5)
                         .setRequired(false)
@@ -46,24 +36,18 @@ export default {
         .addSubcommand(subcommand =>
             subcommand
                 .setName('view')
-                .setNameLocalizations({ 'ar': 'عرض' })
                 .setDescription('View notes for an admin')
-                .setDescriptionLocalizations({ 'ar': 'عرض ملاحظات إداري' })
                 .addUserOption(option =>
                     option
                         .setName('admin')
-                        .setNameLocalizations({ 'ar': 'اداري' })
                         .setDescription('The admin to view notes for')
-                        .setDescriptionLocalizations({ 'ar': 'الإداري المراد عرض ملاحظاته' })
                         .setRequired(true)
                 )
         )
         .addSubcommand(subcommand =>
             subcommand
                 .setName('list')
-                .setNameLocalizations({ 'ar': 'قائمة' })
                 .setDescription('List all admin notes')
-                .setDescriptionLocalizations({ 'ar': 'عرض جميع ملاحظات الإداريين' })
         ),
     
     execute: async (interaction) => {

@@ -5,16 +5,12 @@ import { EmbedColors } from '../../utils/helpers.js';
 export default {
     data: new SlashCommandBuilder()
         .setName('language')
-        .setNameLocalizations({ 'ar': 'اللغة' })
         .setDescription('Change bot language')
-        .setDescriptionLocalizations({ 'ar': 'تغيير لغة البوت' })
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
         .addStringOption(option =>
             option
                 .setName('lang')
-                .setNameLocalizations({ 'ar': 'اللغة' })
                 .setDescription('Language to set')
-                .setDescriptionLocalizations({ 'ar': 'اللغة المراد تعيينها' })
                 .addChoices(
                     { name: 'العربية', value: 'ar' },
                     { name: 'English', value: 'en' }
