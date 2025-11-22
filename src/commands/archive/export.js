@@ -2,8 +2,13 @@ import { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits, AttachmentBuild
 import { db } from '../../database/schema.js';
 import { getDateRange, EmbedColors } from '../../utils/helpers.js';
 import { t } from '../../locales/index.js';
-import { writeFileSync } from 'fs';
+import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export default {
     data: new SlashCommandBuilder()
@@ -65,9 +70,14 @@ export default {
                 admin_notes: db.prepare(`SELECT * FROM admin_notes`).all()
             };
             
-            // Write to temporary file
+            // Write to exports directory in project
+            const exportsDir = join(__dirname, '../../../data/exports');
+            if (!existsSync(exportsDir)) {
+                mkdirSync(exportsDir, { recursive: true });
+            }
+            
             const filename = `statistics-export-${Date.now()}.json`;
-            const filepath = join('/tmp', filename);
+            const filepath = join(exportsDir, filename);
             writeFileSync(filepath, JSON.stringify(data, null, 2));
             
             // Create attachment

@@ -33,16 +33,22 @@ export function formatDuration(milliseconds) {
     
     if (days > 0) {
         const remainingHours = hours % 24;
-        return `${days} يوم${days > 1 ? '' : ''} ${remainingHours > 0 ? `و ${remainingHours} ساعة` : ''}`;
+        const daysText = days > 2 ? 'أيام' : days === 2 ? 'يومان' : 'يوم';
+        const hoursText = remainingHours > 2 ? 'ساعات' : remainingHours === 2 ? 'ساعتان' : 'ساعة';
+        return `${days} ${daysText}${remainingHours > 0 ? ` و ${remainingHours} ${hoursText}` : ''}`;
     }
     if (hours > 0) {
         const remainingMinutes = minutes % 60;
-        return `${hours} ساعة${hours > 1 ? '' : ''} ${remainingMinutes > 0 ? `و ${remainingMinutes} دقيقة` : ''}`;
+        const hoursText = hours > 2 ? 'ساعات' : hours === 2 ? 'ساعتان' : 'ساعة';
+        const minutesText = remainingMinutes > 2 ? 'دقائق' : remainingMinutes === 2 ? 'دقيقتان' : 'دقيقة';
+        return `${hours} ${hoursText}${remainingMinutes > 0 ? ` و ${remainingMinutes} ${minutesText}` : ''}`;
     }
     if (minutes > 0) {
-        return `${minutes} دقيقة${minutes > 1 ? '' : ''}`;
+        const minutesText = minutes > 2 ? 'دقائق' : minutes === 2 ? 'دقيقتان' : 'دقيقة';
+        return `${minutes} ${minutesText}`;
     }
-    return `${seconds} ثانية${seconds > 1 ? '' : ''}`;
+    const secondsText = seconds > 2 ? 'ثوان' : seconds === 2 ? 'ثانيتان' : 'ثانية';
+    return `${seconds} ${secondsText}`;
 }
 
 // Date range helpers

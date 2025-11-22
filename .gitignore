@@ -143,5 +143,7 @@ data/database.db
 data/database.db-shm
 data/database.db-wal
 data/backups/*.db
+data/exports/*.json
 !data/.gitkeep
 !data/backups/.gitkeep
+!data/exports/.gitkeep
